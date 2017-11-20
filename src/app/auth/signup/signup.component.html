@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+    <form [formGroup]="signupForm" (ngSubmit)="onSignup()">
+      <div class="form-group">
+        <label for="email">Email: </label>
+        <input type="text" id="email" class="form-control" name="email" formControlName="email">
+        <span class="help-box" *ngIf="!signupForm.get('email').valid && signupForm.get('email').touched">The email field must not be empty!</span>
+      </div>
+      <div class="form-group">
+        <label for="password">Password: </label>
+        <input  class="form-control" type="password" id="password" name="password" formControlName="password">
+        <span class="help-box" *ngIf="!signupForm.get('password').valid && signupForm.get('password').touched">The password field must not be empty!</span>
+        <span class="help-box" *ngIf="isWeakPassword === true">The password is too short!</span>
+      </div>
+      <hr>
+      <button class="btn btn-primary" type="submit" [disabled]="!signupForm.valid">Sign up</button>
+    </form>
+  </div>
+</div>
+
